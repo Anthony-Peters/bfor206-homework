@@ -35,7 +35,7 @@ echo “100% awesome” | cut -d” ” -f1
 
 - Set up a local account (you will see the prompts when installing)
 
-```console
+```bash
 # to send a message using echo
 echo “message body” | mail -s “subject” lee@lee.local
 
