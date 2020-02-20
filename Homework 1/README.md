@@ -31,7 +31,7 @@ Split using space instead of percentage:
 echo “100% awesome” | cut -d” ” -f1
 ```
 
-###mail (from mailutils package)
+### mail (from mailutils package)
 
 - Set up a local account (you will see the prompts when installing)
 
