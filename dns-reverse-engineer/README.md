@@ -78,13 +78,13 @@ look like:
 
 ## Submissions
 
-Submit code and screenshots demonstrating the code functionality to the [Github course page](https://classroom.github.com/a/5BJtAPCT).
+Submit code and screenshots demonstrating the code functionality to your github repository for the assignment.
 
 ## Scoring
 
 ### 1. Get DNS entries (2 pts)
 - Show that the program can separate the IPv4 address
-  from other information in the lookup (1 pt)
+  from other information in the lookup (2 pts)
 
 
 ### 2. Store results in CSV file (4 pts)
@@ -93,6 +93,6 @@ Submit code and screenshots demonstrating the code functionality to the [Github 
 - The file contains greater than 100 entries (1 pt)
 - The file contains a header of: `date,timestamp` (1 pt)
 
-### 3. Run program on regular schedule 
+### 3. Run program on regular schedule (2 pts)
 - Demonstrate the ability of the script to run 
-  and collect data at regular intervals of 15 minutes (1 pt)
+  and collect data at regular intervals of 15 minutes (2 pt)
