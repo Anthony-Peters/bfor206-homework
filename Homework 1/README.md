@@ -73,7 +73,7 @@ timestamp for each entry
 ### 4. Run task at regular intervals (3 pts)
 - Show crontab and the log file with regular intervals
 
-##Submission
+## Submission
 Submit code and screenshots demonstrating the code functionality to the [Github course page](https://classroom.github.com/a/5BJtAPCT).
 
 
