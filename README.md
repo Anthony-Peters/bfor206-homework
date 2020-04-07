@@ -1,98 +1,84 @@
-# BFOR 206 Homework 2
+# Homework 3
+
+In this homework, we will analyze data related to cases
+of COVID-19.
+
+# Data
+
+The data we will use comes from a New York Times
+[Github repository](https://github.com/nytimes/covid-19-data).
+It contains data from the United States, and it is
+updated daily. There are two datasets, one is
+by county, and the other is by state. For more information
+about the data, please read the repository's
+`README.md`.
 
 
-The purpose of this homework is to reverse engineer a 
-website's IP addresses.
-It is similar to ping assignment, but rather than send out
-pings, we will conduct DNS lookups for a single website.
-The code should then store the time and IP address into
-a comma-separated value (CSV) file. 
-A laterPython assignment (H3) will then take that CSV 
-and run some basic analysis on this data.
+# Setup
 
-## Helpful Commands
-### PowerShell
+You can import the data directly from Github by using
+pandas and the raw Github data
+[(tutorial)](https://projectosyo.wixsite.com/datadoubleconfirm/single-post/2019/04/15/Reading-csv-data-from-Github---Python).
 
-You will need to look up the DNS mapping of hostnames
-and IP addresses.
+Since this data is updated frequently (several times per day),
+this method is preferable to downloading a static data file.
 
-You can do it using Powershell
+```python
+# get state-level data
+pd.read_csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv')
 
-```powershell
-Resolve-DnsName
-```
-In PowerShell, you can concatenate strings using
-this [Stack Overflow](https://stackoverflow.com/questions/15113413/how-do-i-concatenate-strings-and-variables-in-powershell) answer.
-
-To append to a file, use `Out-File` 
-
-```powershell
-Out-File -Append -FilePath [file] -InputObject [data]
-```
-
-You can schedule the Powershell Task using
-the [Windows Task Scheduler](https://social.technet.microsoft.com/wiki/contents/articles/38580.configure-to-run-a-powershell-script-into-task-scheduler.aspx).
-
-### bash
-
-To perform the lookup with bash:
-
-```bash
-nslookup
+# get county-level data
+pd.read_csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv')
 ```
 
+Use the tools and techniques from the Python labs
+that demonstrate how to use `pandas`. Some parts
+of the assignment were already completed during labs.
+
+<!--  -->
+# Scoring
+This assignment will be graded out of 12 points. There is a
+maximum of 16 possible points.
+
+## 1. Summarize the data (4 points)
+
+1. What is the _percent_ increase in cases each day?
+2. What is the _percent_ increase in deaths each day?
+3. Which state has the highest case fatality rate as of the most
+   recent day? Which is the lowest? Case fatality rate is the
+   number of deaths divided by the number of cases.
+4. Which county has the highest case fatality rate as of the most
+   recent day?
+
+## 2. Visualize the data (4 points)
+
+1. Plot the total number of cases & deaths in the US for each day.
+2. Plot the case fatality rate in the US for each day. Case
+   fatality rate is the number of deaths divided by the number
+   of cases.
+3. Plot the case _growth rate_ in the US for each day.
+4. Plot the case _growth rate_ for three states for each day.
 
 
-## Storing results
-Results should be stored in a CSV file with two columns.
-For example, the raw output should look like:
+## 3. Get insights from the data (4 points)
 
-```
-timestamp,address
-2020-03-05 10:15:00AM,192.168.1.10
-2020-03-05 10:30:00AM,192.168.1.10
-2020-03-05 10:45:00AM,192.168.1.11
-```
-The timestamp format you use may be different. It should at least include the date and time.
+1. Which states had the most new cases in the previous day (top 5)?
+2. Which counties had the most new cases in the previous day (top 5)?
+3. Which states had the greatest percentage increase cases in the
+   previous day (top 5)?
+4. Which counties had the greatest percentage increase in cases in
+   in the previous day (top 5)?
 
-You may wish to test the CSV file. You 
-can attempt to open it with a spreadsheet, like Excel.
-When opened in Excel, it should look like:
+## 4. Conduct your own analysis (up to 4 points)
+You may run an analysis of your choosing that is not included
+in the above sections, for a maximum of four points. The analyses
+should be at least as substantial as those in the above
+sections to receive credit. You can also look at other related
+datasets. Johns Hopkins has
+[worldwide data](https://github.com/CSSEGISandData/COVID-19).
 
-| timestamp           | address      |
-|---------------------|--------------|
-| 2020-03-05 10:15:00 | 192.168.1.10 |
-| 2020-03-05 10:30:00 | 192.168.1.10 |
-| 2020-03-05 10:45:00 | 192.168.1.11 |
+# Submission
 
-
-Including the header in the file is optional for now,
-but worth an extra point. The file without the header would
-look like:
-
-```
-2020-03-05 10:15:00AM,192.168.1.10
-2020-03-05 10:30:00AM,192.168.1.10
-2020-03-05 10:45:00AM,192.168.1.11
-```
-
-## Submissions
-
-Submit code and screenshots demonstrating the code functionality to your github repository for the assignment.
-
-## Scoring
-
-### 1. Get DNS entries (2 pts)
-- Show that the program can separate the IPv4 address
-  from other information in the lookup (2 pts)
-
-
-### 2. Store results in CSV file (4 pts)
-- The file should be properly formatted (1 pt)
-- The file should contain multiple entries (1 pt)
-- The file contains greater than 100 entries (1 pt)
-- The file contains a header of: `date,timestamp` (1 pt)
-
-### 3. Run program on regular schedule (2 pts)
-- Demonstrate the ability of the script to run 
-  and collect data at regular intervals of 15 minutes (2 pt)
+Commit and push your code to this Git repository. The
+instructor will grade the last commit before the due
+date.
