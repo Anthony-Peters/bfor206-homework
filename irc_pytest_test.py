@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
-import irc_homework.regex_part2_done as re2
+import regex_part2_done as re2
 
 
 
