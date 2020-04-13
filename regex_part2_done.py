@@ -30,8 +30,9 @@ def test_find_message():
 test_find_message()
 
 #%% load data
+"""
 raw_log = ""
 with open('data/hackers.log', 'r+', errors='ignore') as f:
     raw_log = f.readlines()
     
-    
+"""
