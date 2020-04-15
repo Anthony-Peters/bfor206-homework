@@ -1,84 +1,82 @@
-# Homework 3
+# Homework 4
 
-In this homework, we will analyze data related to cases
-of COVID-19.
+Processing Internet Relay Chat (IRC) logs.
+
+# Overview
+The purpose of this homework is to analyze textual log data from
+an online chat forum related to the Anonymous hacktivist group.
+You will learn how to apply regular expressions, summarize log data,
+ quantify text data, and summarize time trends.
+
 
 # Data
+IRC is an early protocol for instant messaging developed in the
+early years of the Internet. The openness and ability to remain
+anonymous has made IRC a popular channel for hacker networks to
+collaborate and share ideas.
 
-The data we will use comes from a New York Times
-[Github repository](https://github.com/nytimes/covid-19-data).
-It contains data from the United States, and it is
-updated daily. There are two datasets, one is
-by county, and the other is by state. For more information
-about the data, please read the repository's
-`README.md`.
+The data comes from the
+[AZSecure Project](https://www.azsecure-data.org/internet-relay-chat.html).
+It contains two years of chats between hackers associated with the
+hacktivist group Anonymous. In these logs they share information
+about malware, setting up servers to deploy attacks, and other
+information related to hacking systems.
 
+The collection and analysis of these chats is a form of
+cyber-threat intelligence. The analysis of these chats and
+other dark web data sources enable proactive defense against
+attacks.
 
-# Setup
+# Analysis
+## 1. User Data
 
-You can import the data directly from Github by using
-pandas and the raw Github data
-[(tutorial)](https://projectosyo.wixsite.com/datadoubleconfirm/single-post/2019/04/15/Reading-csv-data-from-Github---Python).
+1.  Which users posted the most messages (2pts)?
+2.  Which users logged in the greatest number of times? (2pts)
+3.	Which users spent the most *time* in the chat? (3pts)
 
-Since this data is updated frequently (several times per day),
-this method is preferable to downloading a static data file.
+## 2. Messages
+1.	Count the total number of written messages
+    (only those with actual text content) (1 pts).
+2.	Find the most common words (only include message content) (2 pts)
+3.	Find and rank (by count) words not in an English dictionary (2 pts).
+    This is a simple method that can identify some names of malware tools.
+4.	How many distinct URLs were posted in the chat? (1 pt)
+5.  Which URLs were posted the most (top 5)? (1 pt)
+6.  Generate a list of sites on the Dark Web (sites ending in
+    .onion) (1pt)
 
-```python
-# get state-level data
-pd.read_csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv')
+## 3. General Activity
+1.  Which hours of the day had the most messages (1 pt)?
+2.  Which days had the most messages (top 10 days) (2pts)?
+2.	Rank the days of the week by average message count (1pt).
 
-# get county-level data
-pd.read_csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv')
-```
+# Grading
+This analysis portion of the assignment is graded out of 12 points.
+The maximum score for analysis is 16 points.
 
-Use the tools and techniques from the Python labs
-that demonstrate how to use `pandas`. Some parts
-of the assignment were already completed during labs.
-
-<!--  -->
-# Scoring
-This assignment will be graded out of 12 points. There is a
-maximum of 16 possible points.
-
-## 1. Summarize the data (4 points)
-
-1. What is the _percent_ increase in cases each day?
-2. What is the _percent_ increase in deaths each day?
-3. Which state has the highest case fatality rate as of the most
-   recent day? Which is the lowest? Case fatality rate is the
-   number of deaths divided by the number of cases.
-4. Which county has the highest case fatality rate as of the most
-   recent day?
-
-## 2. Visualize the data (4 points)
-
-1. Plot the total number of cases & deaths in the US for each day.
-2. Plot the case fatality rate in the US for each day. Case
-   fatality rate is the number of deaths divided by the number
-   of cases.
-3. Plot the case _growth rate_ in the US for each day.
-4. Plot the case _growth rate_ for three states for each day.
-
-
-## 3. Get insights from the data (4 points)
-
-1. Which states had the most new cases in the previous day (top 5)?
-2. Which counties had the most new cases in the previous day (top 5)?
-3. Which states had the greatest percentage increase cases in the
-   previous day (top 5)?
-4. Which counties had the greatest percentage increase in cases in
-   in the previous day (top 5)?
-
-## 4. Conduct your own analysis (up to 4 points)
-You may run an analysis of your choosing that is not included
-in the above sections, for a maximum of four points. The analyses
-should be at least as substantial as those in the above
-sections to receive credit. You can also look at other related
-datasets. Johns Hopkins has
-[worldwide data](https://github.com/CSSEGISandData/COVID-19).
+## Documentation
+Your code should also be well-documented with comments, sources,
+and explanations of what is happening. Fully documented code will
+receive full credit. Mostly complete documentation will receive
+a deduction of a point, minimal documentation will result in a
+deduction of 2 points, and no documentation will result in a
+deduction of 3 points from your score.
 
 # Submission
 
 Commit and push your code to this Git repository. The
 instructor will grade the last commit before the due
-date.
+date. The instructor may
+wish to see a demonstration of your code.
+
+# Tips
+
+- <+evilbot> This user is a bot. If possible, filter this user’s
+  posts from the chat
+- You can identify changes in days with the messages
+  “--- Day changed Mon Sep 26 2016”. There are some instances of
+  this measure missing. It is possible to correct this issue by
+  looking at the times of the day (i.e. the hour rolls over to 00).
+- Users can change their usernames. An alternative to usernames
+  for login-logout behavior is to use their login identifiers
+  (for example: [androirc@AN-l8e.7dp.8hdu3q.IP]).
