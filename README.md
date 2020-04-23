@@ -48,11 +48,11 @@ attacks.
 ## 3. General Activity
 1.  Which hours of the day had the most messages (1 pt)?
 2.  Which days had the most messages (top 10 days) (2pts)?
-2.	Rank the days of the week by average message count (1pt).
+3.	Rank the days of the week by average message count (1pt).
 
 # Grading
-This analysis portion of the assignment is graded out of 12 points.
-The maximum score for analysis is 16 points.
+This assignment is graded out of 15 points.
+The maximum score for analysis is 19 points.
 
 ## Documentation
 Your code should also be well-documented with comments, sources,
