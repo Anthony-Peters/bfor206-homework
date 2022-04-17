@@ -2,11 +2,9 @@
 
 import pytest
 import datetime
-
 import irc_parse
 
 
-# run a test to make sure things are ok structurally.
 
 def test_sanity():
     assert irc_parse.sanity_check() == True
@@ -60,6 +58,48 @@ emote_1 = '08:23  * eezee is now playing: Smash Mouth - All Star\n'
 # topic rows
 topic_1 = '00:00 -EmmaWatson:#hackers- Channel Topic: No carding, schools, facebook - Use -tools for info and -nameoftool for more info - USE A FUCKING VPN - Other chans: #tutorials #ddos Support arrested anons http://goo.gl/Bz92ES | Hacking aid https://google.com | LURK MOAR\n'
 topic_2 = '05:24 -!- Iggy changed the topic of #hackers to: No carding, no .edu *NO FB*- Use -tools for info and -nameoftool for more info - USE A FUCKING VPN - Other chans: #tutorials #ddos Support arrested anons http://goo.gl/Bz92ES | Hacking aid https://google.com | LURK MOAR | satan eats dicks*'
+
+
+
+@pytest.mark.parametrize('row,expected', [(comment_row_1, ' '), 
+                                          (comment_row_2, '+'),
+                                          (comment_row_3, '%'),
+                                          (comment_row_4, '~'),
+                                          (comment_row_5, ' '),
+                                          (comment_row_6, ' '),
+                                          (comment_row_7, ' '),
+                                          (comment_row_8, ' '),
+                                          (comment_row_9, ' ')])
+def test_get_admin_flag(row, expected):
+    assert irc_parse.get_admin_flag(row) == expected
+
+
+def test_find_urls():
+    # Test 1 - A single URL as input
+    case_1_input = 'https://www.github.com/'
+    case_1_output = ["https://www.github.com/"]
+    assert irc_parse.find_urls(case_1_input) == case_1_output
+
+    # Test 2 - longer URLs
+    case_2_input = "https://www.github.com/lspitzley/bfor206_spring2022"
+    case_2_output = ["https://www.github.com/lspitzley/bfor206_spring2022"]
+    assert irc_parse.find_urls(case_2_input) == case_2_output
+
+    # Test 3 - no URLs
+    case_3_input = "There are no URLs in this string"
+    case_3_output = []
+    assert irc_parse.find_urls(case_3_input) == case_3_output
+
+    # Test 4 - multiple URLs
+    case_4_input = "I like https://github.com, I also like https://bitbucket.com/"
+    case_4_output = ["https://github.com,", "https://bitbucket.com/"]
+    assert irc_parse.find_urls(case_4_input) == case_4_output
+
+    # Test 5 - numpy nan value as input
+    import numpy as np
+    case_5_input = np.nan
+    case_5_output = []
+    assert irc_parse.find_urls(case_5_input) == case_5_output
 
 @pytest.mark.parametrize('row,expected', [(log_open_1, datetime.datetime(2016, 9, 20)),
                                           (log_open_2, datetime.datetime(2018, 4, 29))])
@@ -219,31 +259,3 @@ def test_get_user_prefix(row, expected):
                                            (comment_row_9, 'zid swetchun teh lettaz ap!\n'),])
 def test_get_chat_message(row, expected):
     assert irc_parse.get_chat_message(row) == expected
-
-
-def test_find_urls():
-    # Test 1 - A single URL as input
-    case_1_input = 'https://www.github.com/'
-    case_1_output = ["https://www.github.com/"]
-    assert irc_parse.find_urls(case_1_input) == case_1_output
-
-    # Test 2 - longer URLs
-    case_2_input = "https://www.github.com/lspitzley/bfor206_spring2022"
-    case_2_output = ["https://www.github.com/lspitzley/bfor206_spring2022"]
-    assert irc_parse.find_urls(case_2_input) == case_2_output
-
-    # Test 3 - no URLs
-    case_3_input = "There are no URLs in this string"
-    case_3_output = []
-    assert irc_parse.find_urls(case_3_input) == case_3_output
-
-    # Test 4 - multiple URLs
-    case_4_input = "I like https://github.com, I also like https://bitbucket.com/"
-    case_4_output = ["https://github.com,", "https://bitbucket.com/"]
-    assert irc_parse.find_urls(case_4_input) == case_4_output
-
-    # Test 5 - numpy nan value as input
-    import numpy as np
-    case_5_input = np.nan
-    case_5_output = []
-    assert irc_parse.find_urls(case_5_input) == case_5_output
