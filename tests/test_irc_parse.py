@@ -5,6 +5,13 @@ import datetime
 
 import irc_parse
 
+
+# run a test to make sure things are ok structurally.
+
+def test_sanity():
+    assert irc_parse.sanity_check() == True
+
+
 # some sample rows
 # data
 # comments in chat

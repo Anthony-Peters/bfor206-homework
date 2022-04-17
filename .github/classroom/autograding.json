@@ -1,24 +1,13 @@
 {
   "tests": [
     {
-      "name": "args test",
-      "setup": "",
-      "run": "bash args_lab.sh 3 4",
+      "name": "sanity_check",
+      "run": "pytest tests/test_irc_parse.py::test_sanity",
       "input": "",
-      "output": "7\r\n12",
+      "output": "",
       "comparison": "included",
       "timeout": 10,
       "points": 1
-    },
-    {
-      "name": "fib_sequence_test",
-      "setup": "",
-      "run": "bash fib_seq.sh 5",
-      "input": "",
-      "output": "0\r\n1\r\n1\r\n2\r\n3\r\n5",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 3
     },
     {
       "name": "hours_minutes_test",
