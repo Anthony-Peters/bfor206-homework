@@ -1,7 +1,7 @@
 {
   "tests": [
     {
-      "name": "sanity_check",
+      "name": "Basic test - should always pass",
       "run": "pytest tests/test_irc_parse.py::test_sanity",
       "input": "",
       "output": "",
@@ -10,7 +10,7 @@
       "points": 1
     },
     {
-      "name": "hours_minutes_test",
+      "name": "Find hours and minutes",
       "run": "pytest tests/test_irc_parse.py::test_get_hours_minutes",
       "input": "",
       "output": "",
@@ -19,8 +19,71 @@
       "points": 1
     },
     {
-      "name": "hours_current_date",
+      "name": "Find date change rows",
       "run": "pytest tests/test_irc_parse.py::test_get_current_date",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Find username in join/quit rows",
+      "run": "pytest tests/test_irc_parse.py::test_get_join_quit_username",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Check if a row is a day change",
+      "run": "pytest tests/test_irc_parse.py::test_is_date_row",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Check if a row is a join/quit row",
+      "run": "pytest tests/test_irc_parse.py::test_is_join_quit",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Check if a row is a chat message",
+      "run": "pytest tests/test_irc_parse.py::test_message",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Get username from chat row",
+      "run": "pytest tests/test_irc_parse.py::test_get_user_name",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Get a username prefix",
+      "run": "pytest tests/test_irc_parse.py::test_get_user_prefix",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Find hours and minutes",
+      "run": "pytest tests/test_irc_parse.py::test_get_chat_message",
       "input": "",
       "output": "",
       "comparison": "included",
