@@ -12,27 +12,11 @@ def sanity_check():
     return True
 
 def get_chat_message(row):
-    """
-    Separate the text content from a message row
-
-    Parameters
-    ----------
-    row : str
-        row that contains a message.
-
-    Returns
-    -------
-    Message that the user posted in the chat room.
-
-    """
-
     pass
 
 
-
-
 def get_current_date(dateline):
-    """    parse the IRC log date format to find the current date
+    """    Parse the IRC log date format to find the current date
 
     Return a POSIX (datetime) form date for midnight
 
@@ -40,14 +24,14 @@ def get_current_date(dateline):
         dateline (str): Row that begins with `---`
 
     Returns:
-        datetime: datetime object with the date from the row at 00:00 
+        datetime: datetime object with the date from the row 
     """
 
     pass
 
 
 def get_hours_minutes(time_row):
-    """ convert time into useful format """
+    """ covered in class 11-2 """
     pass
 
 
@@ -100,6 +84,8 @@ def get_user_prefix(row):
     """ Gets the prefix of a username, if any.
     If there is not a prefix, return None.
 
+    For example, '@' or '+'.
+
     Args:
         row (str): chat message row.
 
@@ -125,25 +111,6 @@ def is_date_row(row):
 
     """
     pass
-
-def is_emote(row):
-    """
-    Check if row is an emote
-
-    Parameters
-    ----------
-    row : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    bool
-        DESCRIPTION.
-
-    """
-
-    pass
-
 
 
 def is_join_quit(row):
@@ -179,25 +146,6 @@ def is_message(row):
     -------
     bool
         True if row belongs to chat log.
-
-    """
-    pass
-
-
-
-def is_topic(row):
-    """
-    Check if row is printing the channel topic
-
-    Parameters
-    ----------
-    row : TYPE
-        DESCRIPTION.
-
-    Returns
-    -------
-    bool
-        DESCRIPTION.
 
     """
     pass
