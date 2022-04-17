@@ -1,0 +1,42 @@
+{
+  "tests": [
+    {
+      "name": "args test",
+      "setup": "",
+      "run": "bash args_lab.sh 3 4",
+      "input": "",
+      "output": "7\r\n12",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "fib_sequence_test",
+      "setup": "",
+      "run": "bash fib_seq.sh 5",
+      "input": "",
+      "output": "0\r\n1\r\n1\r\n2\r\n3\r\n5",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 3
+    },
+    {
+      "name": "hours_minutes_test",
+      "run": "pytest tests/test_irc_parse.py::test_get_hours_minutes",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "hours_current_date",
+      "run": "pytest tests/test_irc_parse.py::test_get_current_date",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
