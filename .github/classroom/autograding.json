@@ -56,7 +56,7 @@
     },
     {
       "name": "Check if a row is a chat message",
-      "run": "pytest tests/test_irc_parse.py::test_message",
+      "run": "pytest tests/test_irc_parse.py::test_is_message",
       "input": "",
       "output": "",
       "comparison": "included",
@@ -84,6 +84,15 @@
     {
       "name": "Find hours and minutes",
       "run": "pytest tests/test_irc_parse.py::test_get_chat_message",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "Find URLs",
+      "run": "pytest tests/test_irc_parse.py::test_find_urls",
       "input": "",
       "output": "",
       "comparison": "included",

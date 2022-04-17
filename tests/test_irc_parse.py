@@ -219,3 +219,31 @@ def test_get_user_prefix(row, expected):
                                            (comment_row_9, 'zid swetchun teh lettaz ap!\n'),])
 def test_get_chat_message(row, expected):
     assert irc_parse.get_chat_message(row) == expected
+
+
+def test_find_urls():
+    # Test 1 - A single URL as input
+    case_1_input = 'https://www.github.com/'
+    case_1_output = ["https://www.github.com/"]
+    assert irc_parse.find_urls(case_1_input) == case_1_output
+
+    # Test 2 - longer URLs
+    case_2_input = "https://www.github.com/lspitzley/bfor206_spring2022"
+    case_2_output = ["https://www.github.com/lspitzley/bfor206_spring2022"]
+    assert irc_parse.find_urls(case_2_input) == case_2_output
+
+    # Test 3 - no URLs
+    case_3_input = "There are no URLs in this string"
+    case_3_output = []
+    assert irc_parse.find_urls(case_3_input) == case_3_output
+
+    # Test 4 - multiple URLs
+    case_4_input = "I like https://github.com, I also like https://bitbucket.com/"
+    case_4_output = ["https://github.com,", "https://bitbucket.com/"]
+    assert irc_parse.find_urls(case_4_input) == case_4_output
+
+    # Test 5 - numpy nan value as input
+    import numpy as np
+    case_5_input = np.nan
+    case_5_output = []
+    assert irc_parse.find_urls(case_5_input) == case_5_output
