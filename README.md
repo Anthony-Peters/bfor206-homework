@@ -1,5 +1,5 @@
 # Homework 3
-
+-Anthony Peters
 For the full homework description and grading
 information, see the document in the main course 
 repo:
